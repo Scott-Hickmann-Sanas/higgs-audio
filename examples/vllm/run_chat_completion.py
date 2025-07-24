@@ -59,8 +59,8 @@ def run_smart_voice() -> None:
 
 def run_voice_clone(stream: bool = False) -> None:
     data_dir = os.path.join(os.path.dirname(__file__), "..", "voice_prompts")
-    audio_path = os.path.join(data_dir, "belinda.wav")
-    audio_text_path = os.path.join(data_dir, "belinda.txt")
+    audio_path = os.path.join(data_dir, "scott.wav")
+    audio_text_path = os.path.join(data_dir, "scott.txt")
     with open(audio_text_path, "r") as f:
         audio_text = f.read()
     audio_base64 = encode_base64_content_from_file(audio_path)
@@ -81,7 +81,7 @@ def run_voice_clone(stream: bool = False) -> None:
         {
             "role": "user",
             "content": (
-                "Hey there! I'm your friendly voice twin in the making. Pick a voice preset below or upload your own audio - let's clone some vocals and bring your voice to life!"
+                "Hey there! I'm a software engineer at Sanas. I am speaking to you in French."
             ),
         },
     ]
@@ -216,6 +216,7 @@ if __name__ == "__main__":
 
     if args.model is None:
         models = client.models.list()
+        print(models)
         model = models.data[0].id
     else:
         model = args.model
